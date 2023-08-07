@@ -1,0 +1,4 @@
+File					Additions	Deletions	Total Changes made
+------------------------------------------------------------------
+helloserver/server.go		1			1				2
+outyet/main.go		        1			2				3

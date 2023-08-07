@@ -1,35 +1,43 @@
 import difflib
 
+def read_go_file(file_path):
+    with open(file_path, "r") as file:
+        return file.readlines()
 
-def compare_files(file1_path, file2_path):
-    with open(file1_path, 'r') as file1, open(file2_path, 'r') as file2:
-        lines1 = file1.readlines()
-        lines2 = file2.readlines()
+def compare_go_files(file_path_old, file_path_new):
+    lines_old = read_go_file(file_path_old)
+    lines_new = read_go_file(file_path_new)
+    
+    output_file = "changes.txt"
+    
 
-    differ = difflib.Differ()
-    diff = list(differ.compare(lines1, lines2))
+    diff = difflib.unified_diff(lines_old, lines_new, fromfile=file_path_old, tofile=file_path_new)
+    print(diff)
 
-    additions = sum(1 for line in diff if line.startswith('+ '))
-    subtractions = sum(1 for line in diff if line.startswith('- '))
+    # differ = difflib.Differ()
+    # diff2 = list(differ.compare(lines_old, lines_new))
+    # print(diff2)
 
-    return additions, subtractions
+    # with open("output_file.txt", "w") as f:
+    #     f.write("File\t\tAdditions\tDeletions\n")
+    #     f.write("--------------------------------\n")
+    #     for line in diff:
+    #         additions, deletions, filename = line.split("\t")
+    #         f.write(f"{filename}\t{additions}\t\t{deletions}\n")
 
 
-def main():
-    # file1_path = input("Enter the path of the first file: ")
-    # file2_path = input("Enter the path of the second file: ")
-
-    file1_path = "Go/fileA.go"  # Use forward slash for path
-    file2_path = "Go/fileB.go"  # Use forward slash for path
-
-    additions, subtractions = compare_files(file1_path, file2_path)
-
-    output = f"Additions: {additions}\nSubtractions: {subtractions}"
-    print(output)
-
-    with open("file_changes.txt", "w") as output_file:
-        output_file.write(output)
-
+    # Print the differences
+    for line in diff:
+        print(line, end='')
 
 if __name__ == "__main__":
-    main()
+    
+    file_path_old = f"./../files/fileA.go"
+    file_path_new = f"./../files/fileB.go"
+    
+    try:
+        compare_go_files(file_path_old, file_path_new)
+    except FileNotFoundError:
+        print("Error: File not found.")
+    except Exception as e:
+        print("An error occurred:", e)
