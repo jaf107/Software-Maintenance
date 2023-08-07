@@ -1,0 +1,10 @@
+File					            Additions	Deletions	Total Changes made
+------------------------------------------------------------------------------
+internal/pkg/nsq/fakensq/fakensq.go		39			10				49
+internal/pkg/nsq/handler.go		        13			13				26
+internal/pkg/nsq/handler_test.go		15			15				30
+internal/pkg/nsq/middleware.go		    3			12				15
+internal/pkg/nsq/middleware_test.go		21			22				43
+internal/pkg/nsq/nsq.go		            30			27				57
+internal/pkg/nsq/nsq_test.go		    7			6				13
+internal/pkg/nsq/nsqio/nsqio.go		    31			11				42

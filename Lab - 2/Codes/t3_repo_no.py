@@ -19,7 +19,7 @@ def compare_git_versions(repo_path, commit1, commit2, output_file):
 
     with open(output_file, "w") as f:
         f.write("File\t\t\t\t\tAdditions\tDeletions\tTotal Changes made\n")
-        f.write("------------------------------------------------------------------\n")
+        f.write("----------------------------------------------------------------------\n")
         for line in diff:
             additions, deletions, filename = line.split("\t")
             if is_go_file(filename):
@@ -30,9 +30,15 @@ def compare_git_versions(repo_path, commit1, commit2, output_file):
 if __name__ == "__main__":
     # repo_path = r"E:\Lab - Software Maintenance\Test-Repo\example"
     repo_path = f"./../test-repo"
-    commit1 = "19299f6048bb8ab82de0cf9266ae46356c3b12b7"
-    commit2 = "3dc24130247597153c0c54156448d48a260b4a07"
-    output_file = "changes_output.txt"
+    
+    commit2 = "d22e7c36ff52653442b1f3c7ba4f4e01a0c3c355"
+    commit1 = "24326d0d670aa6d8c7848313b0c80a71c1453e7c"
+    
+    # commit1 = "19299f6048bb8ab82de0cf9266ae46356c3b12b7"
+    # commit2 = "3dc24130247597153c0c54156448d48a260b4a07"
+    
+    
+    output_file = "t3_output.txt"
 
     # Check if the repository path is valid
     if not os.path.exists(repo_path):
